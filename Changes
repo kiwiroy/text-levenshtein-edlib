@@ -1,0 +1,6 @@
+Revision history for Perl extension Text::Levenshtein::Edlib.
+
+0.001  Tue Feb 28 18:19:22 2017
+	- original version; created by h2xs 1.23 with options
+		-v 0.001 -b 5.14.0 -n Text::Levenshtein::Edlib edlib/edlib/include/edlib.h
+
