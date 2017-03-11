@@ -200,20 +200,34 @@ the beginning and C<GAC> at the end of the target are ignored.
 
 =back
 
-The fifth argument, I<$task>, chooses what we want to compute.
-If set to C<EDLIB_TASK_PATH> (default), all the keys described above will be computed.
-If set to C<EDLIB_TASK_LOC>, all keys except for C<alignment> will be computed.
-If set to C<EDLIB_TASK_DISTANCE>, all keys except for C<alignment> and C<startLocations> will be computed.
-The less we compute, the faster the function will run.
+The fifth argument, I<$task>, chooses what we want to compute. The options are:
+
+=over
+
+=item C<EDLIB_TASK_PATH> (default, slowest)
+
+All the keys described above will be computed.
+
+=item C<EDLIB_TASK_LOC>
+
+All keys except for C<alignment> will be computed.
+
+=item C<EDLIB_TASK_DISTANCE> (fastest)
+
+All keys except for C<alignment> and C<startLocations> will be computed.
+
+=back
+
+The less the function computes, the faster it runs.
 
 =back
 
 =head2 EXPORT
 
-All constants by default. You can export the functions C<align> and
-C<distance> and any of the constants below. You can use the tags
-C<:constants> to export every constant, and C<:all> to export every
-constant, C<align> and C<distance>.
+All constants by default. You can export the functions C<align>,
+C<distance> and C<to_cigar> and any of the constants below. You can
+use the tags C<:constants> to export every constant, and C<:all> to
+export every constant, C<align>, C<distance> and C<to_cigar>.
 
 =head2 Exportable constants
 
