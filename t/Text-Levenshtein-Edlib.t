@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 11;
 BEGIN { use_ok('Text::Levenshtein::Edlib', ':all') };
 
 
@@ -36,3 +36,9 @@ is $r->{alphabetLength}, 7, 'align->{alphabetLength}';
 is_deeply $r->{endLocations}, [6], 'align->{endLocations}';
 is_deeply $r->{startLocations}, [0], 'align->{startLocations}';
 is_deeply $r->{alignment}, [3, 0, 0, 0, 3, 0, 2], 'align->{alignment}';
+
+my $cigar;
+$cigar = to_cigar $r->{alignment};
+is $cigar, '6M1D', 'to_cigar';
+$cigar = to_cigar $r->{alignment}, EDLIB_CIGAR_EXTENDED;
+is $cigar, '1X3=1X1=1D', 'to_cigar (extended)';

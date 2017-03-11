@@ -24,7 +24,7 @@ my @constants =
 		EDLIB_TASK_PATH/;
 
 our %EXPORT_TAGS =
-  (all => [ @constants, qw/align distance/ ], constants => \@constants);
+  (all => [ @constants, qw/align distance to_cigar/ ], constants => \@constants);
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = ( @{ $EXPORT_TAGS{'constants'} } );
 our $VERSION = '0.001';
@@ -71,6 +71,13 @@ sub distance {
 	align($q, $t, $k)->{editDistance}
 }
 
+sub to_cigar {
+	my ($align, $format) = @_;
+	$align = pack 'C*', @$align;
+	$format //= EDLIB_CIGAR_STANDARD();
+	edlibAlignmentToCigar($align, $format);
+}
+
 1;
 __END__
 
@@ -95,7 +102,9 @@ Text::Levenshtein::Edlib - XS edit distance and optimal alignment path calculati
   say "Start locations are: @{$align->{startLocations}}";
   say "End locations are: @{$align->{endLocations}}";
   say "Alignment path is: @{$align->{alignment}}";
-
+  say "Alignment path (in CIGAR format): ", to_cigar $align->{alignment};
+  say "Alignment path (in extended CIGAR format): ",
+      to_cigar $align->{alignment}, EDLIB_CIGAR_EXTENDED;
 
 =head1 DESCRIPTION
 

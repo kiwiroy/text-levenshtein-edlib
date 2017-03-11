@@ -54,3 +54,7 @@ CODE:
 	RETVAL = newRV_noinc((SV*)returned_av);
 OUTPUT:
 	RETVAL
+
+
+char*
+edlibAlignmentToCigar(unsigned char *alignment, int length(alignment), int format)
