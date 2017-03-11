@@ -67,8 +67,8 @@ sub align {
 }
 
 sub distance {
-	my ($q, $t, $k) = @_;
-	align($q, $t, $k)->{editDistance}
+	my ($q, $t, $k, $mode) = @_;
+	align($q, $t, $k, $mode, EDLIB_TASK_DISTANCE())->{editDistance}
 }
 
 sub to_cigar {
@@ -120,7 +120,7 @@ This module has two functions:
 
 =over
 
-=item B<distance>(I<$query>, I<$target>, [I<$max_distance>])
+=item B<distance>(I<$query>, I<$target>, [I<$max_distance>, [I<$mode>]])
 
 This is the basic interface to the library. It is compatible with the
 function of the same name in L<Text::Levenshtein::XS>.
@@ -128,7 +128,8 @@ function of the same name in L<Text::Levenshtein::XS>.
 It returns the edit distance between the two given strings. If the
 third argument is specified, and the edit distance is greater than the
 value of the third argument, then the function finishes the
-computation early and returns undef.
+computation early and returns undef. See below for the meaning of the
+optional I<$mode> argument.
 
 =item B<align>(I<$query>, I<$target>, [I<$max_distance>, [I<$mode>, [I<$task>]]])
 
