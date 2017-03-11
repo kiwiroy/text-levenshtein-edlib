@@ -27,7 +27,7 @@ our %EXPORT_TAGS =
   (all => [ @constants, qw/align distance to_cigar/ ], constants => \@constants);
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = ( @{ $EXPORT_TAGS{'constants'} } );
-our $VERSION = '0.001';
+our $VERSION = '0.001001';
 
 require XSLoader;
 XSLoader::load('Text::Levenshtein::Edlib', $VERSION);

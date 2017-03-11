@@ -1,5 +1,5 @@
-Text-Levenshtein-Edlib version 0.001
-====================================
+Text-Levenshtein-Edlib version 0.001001
+=======================================
 
 Text::Levenshtein::Edlib is a wrapper around the edlib library that
 computes Levenshtein edit distance and optimal alignment path for a
