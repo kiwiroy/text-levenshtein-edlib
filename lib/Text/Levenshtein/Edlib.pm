@@ -233,7 +233,7 @@ constant, C<align> and C<distance>.
 
 =head1 SEE ALSO
 
-L<https://github.com/Martinsos/edlib/>
+L<https://github.com/Martinsos/edlib/>, L<http://martinsosic.com/edlib/edlib_8h.html>
 
 =head1 AUTHOR
 
