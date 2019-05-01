@@ -22,7 +22,7 @@ PREINIT:
 	AV *returned_av, *endAV, *startAV, *alignAV;
 	int i;
 CODE:
-	align_result = edlibAlign(query, XSauto_length_of_query, target, XSauto_length_of_target, edlibNewAlignConfig(k, mode, task));
+	align_result = edlibAlign(query, XSauto_length_of_query, target, XSauto_length_of_target, edlibNewAlignConfig(k, mode, task, NULL, 0));
 	returned_av = newAV();
 	av_push(returned_av, newSViv(align_result.editDistance));
 	av_push(returned_av, newSViv(align_result.alphabetLength));
