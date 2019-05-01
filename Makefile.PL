@@ -1,9 +1,6 @@
 use 5.014000;
-use Devel::CheckLib;
 use ExtUtils::MakeMaker;
-
-check_lib_or_exit
-  lib => 'edlib';
+use Alien::Base::Wrapper qw( Alien::Edlib !export );
 
 WriteMakefile(
 	NAME              => 'Text::Levenshtein::Edlib',
@@ -14,17 +11,17 @@ WriteMakefile(
 	LICENSE           => 'perl',
 	SIGN              => 1,
 	CONFIGURE_REQUIRES => {
-		qw/Devel::CheckLib     0
+		qw/Alien::Edlib     0
 		   ExtUtils::MakeMaker 0/,
 	},
 	PREREQ_PM         => {},
-	LIBS              => ['-ledlib'],
 	META_ADD           => {
 		dynamic_config => 1,
 		resources      => {
 			repository => 'https://git.ieval.ro/?p=text-levenshtein-edlib.git',
 		},
-	}
+	},
+  Alien::Base::Wrapper->mm_args,
 );
 if  (eval {require ExtUtils::Constant; 1}) {
   # If you edit these definitions to change the constants used by this module,
