@@ -1,0 +1,6 @@
+blib/
+Edlib.bs
+Edlib.c
+MYMETA.*
+pm_to_blib
+*.inc
