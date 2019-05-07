@@ -1,0 +1,29 @@
+language: "perl"
+
+sudo: false
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - cmake
+    - g++-4.9
+
+os:
+  - linux
+#  - osx
+
+perl:
+  - "5.14"
+  - "5.26"
+
+before_install:
+  - cpanm -n -q Alien::Build
+  - cpanm --verbose https://github.com/kiwiroy/p5-alien-edlib/archive/master.tar.gz
+
+script:
+  - perl Makefile.PL && make && make test TEST_VERBOSE=1
+
+after_failure:
+  - cat _alien/state.json
